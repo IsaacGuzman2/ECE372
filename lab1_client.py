@@ -21,7 +21,7 @@ def recv_intro_message(conn):
     #       1. Use a loop that keeps going until `data` equals '\n'
     #       2. Receive 1 byte and set it to the `data` variable
     #       3. Add `data` to `full_data`
-    while data != b"\n":
+    while data != b'\n':
      data = conn.recv(1)
      full_data = full_data + data
     return full_data.decode()
@@ -34,16 +34,19 @@ def recv_intro_message(conn):
 def send_long_message(conn, message):
     
     # TODO: Remove the line below when you start implementing this function!
-    raise NotImplementedError("Not implemented yet!")
+    
 
     # TODO: Send the length of the message: this should be 8 total hexadecimal digits
     #       This means that ffffffff hex -> 4294967295 dec
     #       is the maximum message length that we can send with this method!
     #       hint: you may use the helper function `to_hex`. Don't forget to encode before sending!
-
+    mlength = len(message) 
+    mlength = to_hex(mlength)
+    print(mlength)
+    conn.sendall(mlength.encode())
 
     # TODO: Send the message itself to the server. Don't forget to encode before sending!
-
+    conn.sendall(message.encode())
 
 def main():
 
