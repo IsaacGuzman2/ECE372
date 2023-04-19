@@ -42,7 +42,7 @@ def send_long_message(conn, message):
     #       hint: you may use the helper function `to_hex`. Don't forget to encode before sending!
     mlength = len(message) 
     mlength = to_hex(mlength)
-    print(mlength)
+    
     conn.sendall(mlength.encode())
 
     # TODO: Send the message itself to the server. Don't forget to encode before sending!
